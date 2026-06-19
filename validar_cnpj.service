@@ -1,0 +1,16 @@
+[Unit]
+Description=Validador CNPJ - Gunicorn
+After=network.target
+
+[Service]
+User=root
+Group=root
+WorkingDirectory=/home/anthares/Documentos/Projetos/insomnium/Validador CNPJ
+Environment="PATH=/home/anthares/Documentos/Projetos/insomnium/Validador CNPJ/.venv/bin"
+Environment="FLASK_ENV=production"
+ExecStart=/home/anthares/Documentos/Projetos/insomnium/Validador CNPJ/.venv/bin/gunicorn -w 4 -b 0.0.0.0:8002 validar_cnpj:app
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
